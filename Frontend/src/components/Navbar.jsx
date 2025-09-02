@@ -1,29 +1,114 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
-import { useContext } from "react";
 import { ThemeContext } from "./store/ThemeContext";
+import UploadDropdown from "./UploadDropdown";
 
 const Navbar = () => {
-   const  { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
-      className={`h-[100px] sticky top-[-21px] z-50 w-full flex justify-between items-center p-10 transition-colors duration-300
-        ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-black"}
-      `}
+      className={`h-[100px] sticky top-[-21px] z-50 w-full flex justify-between items-center p-10
+    transition-all duration-300 ease-in-out 
+    ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-black"}
+    ${isScrolled ? "shadow-xl" : "shadow-none"}
+  `}
     >
       <h1 className="font-bold text-xl">LOGO</h1>
 
       {/* Navigation Links */}
       <nav>
-        <ul className="flex gap-6">
-          <li className="hover:underline"><Link to="/">Home</Link></li>
-          <li className="hover:underline"><Link to="/Past-Papers">Past Papers</Link></li>
-          <li className="hover:underline"><Link to="/upload-paper">Upload Papers</Link></li>
-          <li className="hover:underline"><Link to="/meet-admin">Meet Admin</Link></li>
+        <ul className="flex gap-6 items-center">
+          <li className="relative inline-block px-1">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+
+          <li className="relative inline-block px-1">
+            <NavLink
+              to="/past-papers"
+              className={({ isActive }) =>
+                `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+              }
+            >
+              Past Papers
+            </NavLink>
+          </li>
+          <li className="relative inline-block px-1">
+            <NavLink
+              to="/reviews"
+              className={({ isActive }) =>
+                `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+              }
+            >
+              Reviews
+            </NavLink>
+          </li>
+          <li className="relative inline-block px-1">
+            <NavLink
+              to="/meet-admin"
+              className={({ isActive }) =>
+                `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+              }
+            >
+              Meet Admin
+            </NavLink>
+          </li>
+          
+          <li className="relative inline-block px-1">
+            <NavLink
+              to="/contributions"
+              className={({ isActive }) =>
+                `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+              }
+            >
+              Contributions
+            </NavLink>
+          </li>
+           <li>
+            <UploadDropdown/>
+          </li>
+
         </ul>
       </nav>
+
 
       {/* Right-side buttons */}
       <div className="flex items-center gap-4">
@@ -46,10 +131,10 @@ const Navbar = () => {
         </button>
 
         {/* Auth Buttons */}
-        <Button name="Login" />
-        <Button name="Sign Up" />
+        <Button name="Log Out" />
+        
       </div>
-    </header>
+    </header >
   );
 };
 

@@ -1,10 +1,14 @@
 import { createBrowserRouter } from "react-router-dom"
 import App from '../App.jsx'
 import PastPapers from '../pages/PastPapers.jsx'
-import Upload from '../pages/Upload.jsx'
+import UploadPaper from '../pages/UploadPaper.jsx'
 import Home from '../pages/Home.jsx'
 import Approval from '../components/Approval.jsx'
 import MeetAdmin from "../components/MeetAdmin.jsx"
+import PortFolio from "../components/PortFolio.jsx"
+import UploadReview from "../pages/UploadReview.jsx"
+import Reviews from "../pages/Reviews.jsx"
+import Contributions from "../pages/Contributions.jsx"
 
 
 const router = createBrowserRouter([
@@ -13,10 +17,14 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/Past-Papers", element: <PastPapers /> },
-      { path: "/upload-paper", element: <Upload /> },
-      { path: "/upload-paper/approval", element: <Approval /> },
-      { path: "/meet-admin", element: <MeetAdmin />}
-
+      { path: "/reviews", element: <Reviews />},
+      { path: "/upload/paper", element: <UploadPaper /> },
+      { path: "/upload/review", element: <UploadReview /> },
+      { path: "/upload/paper/approval", element: <Approval /> },
+      { path: "/meet-admin", element: <MeetAdmin />},
+      { path: "/meet-admin/portfolio", element: <PortFolio />},
+      { path: "/contributions", element: <Contributions />},
+      
 
 
 

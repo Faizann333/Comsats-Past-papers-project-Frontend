@@ -1,5 +1,5 @@
 import React from 'react'
-import PaperCardList from "../components/PaperCardList"
+import PaperCardList from "../components/paper/PaperCardList"
 
 import { PastPapersContext } from '../components/store/Paper-List-Store'
 import { useContext, useState } from "react";

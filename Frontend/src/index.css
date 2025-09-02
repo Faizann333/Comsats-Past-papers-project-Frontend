@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@keyframes borderLoop {
+  0%   { background-position: 0% 0%; }      /* top */
+  25%  { background-position: 100% 0%; }    /* right */
+  50%  { background-position: 100% 100%; }  /* bottom */
+  75%  { background-position: 0% 100%; }    /* left */
+  100% { background-position: 0% 0%; }      /* back to top */
+}
+
+@keyframes borderLoopp {
+  0%   { border-image-source: linear-gradient(to right, #a855f7, #ec4899, #22c55e, #3b82f6); }
+  25%  { border-image-source: linear-gradient(to bottom, #a855f7, #ec4899, #22c55e, #3b82f6); }
+  50%  { border-image-source: linear-gradient(to left, #a855f7, #ec4899, #22c55e, #3b82f6); }
+  75%  { border-image-source: linear-gradient(to top, #a855f7, #ec4899, #22c55e, #3b82f6); }
+  100% { border-image-source: linear-gradient(to right, #a855f7, #ec4899, #22c55e, #3b82f6); }
+}

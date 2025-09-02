@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaUsers } from "react-icons/fa";
 import { ThemeContext } from "./store/ThemeContext";
+import { Link } from 'react-router-dom';
 
 const MeetAdmin = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -13,7 +14,7 @@ const MeetAdmin = () => {
     >
       <div
         className={`shadow-xl rounded-lg max-w-md w-full text-center p-8 transition-colors duration-500 ${
-          darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-800"
+          darkMode ? "bg-gradient-to-r from-gray-800 to-gray-500 text-gray-100" : "bg-gradient-to-r from-gray-300 to-gray-350 text-gray-800"
         }`}
       >
         {/* Profile Image */}
@@ -22,18 +23,18 @@ const MeetAdmin = () => {
           src="/src/assets/profilePic2.jpg"
           alt="Admin"
         />
-
+        
         {/* Name & Role */}
         <h1
           className={`mt-4 text-2xl font-bold ${
-            darkMode ? "text-white" : "text-gray-800"
+            darkMode ? "text-2xl font-extrabold bg-gradient-to-l from-black to-gray-700 bg-clip-text text-transparent" : "text-2xl font-extrabold bg-gradient-to-l from-gray-200 to-black bg-clip-text text-transparent"
           }`}
         >
           Faizan Ahmed
         </h1>
         <p
           className={`${
-            darkMode ? "text-gray-400" : "text-gray-600"
+            darkMode ? "text-gray-300" : "text-gray-600"
           } transition`}
         >
           MERN Stack Developer | Developer of UniPastPapers | UnderGraduate Student at Comsats Wah
@@ -70,16 +71,33 @@ const MeetAdmin = () => {
           </a>
         </div>
 
-        {/* Official Group Link */}
+        {/* portfiolio link */}
+
         <div className="mt-6">
+          <Link
+            to="/meet-admin/portfolio"
+         
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
+              darkMode
+                ?"bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
+                : "bg-gradient-to-r from-green-600 to-green-400 text-white hover:bg-green-900"
+            }`}
+          >
+            <FaUsers className="text-lg" />
+            My PortFolio
+          </Link>
+        </div>
+
+        {/* Official Group Link */}
+        <div className="mt-3">
           <a
             href="https://chat.whatsapp.com/GMaiCjcAvJWL1tpOB2UFon"
             target="_blank"
             rel="noreferrer"
             className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
               darkMode
-                ? "bg-green-600 text-white hover:bg-green-500"
-                : "bg-green-500 text-white hover:bg-green-600"
+                ?"bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
+                : "bg-gradient-to-r from-green-600 to-green-400 text-white hover:bg-green-600"
             }`}
           >
             <FaUsers className="text-lg" />

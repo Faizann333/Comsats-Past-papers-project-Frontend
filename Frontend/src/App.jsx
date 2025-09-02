@@ -2,13 +2,16 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import { Outlet } from 'react-router-dom'
 import PaperListProvider from './components/store/Paper-List-Store'
-import  ThemeProvider  from './components/store/ThemeContext'
+import ThemeProvider from './components/store/ThemeContext'
+import ReviewListProvider from './components/store/ReviewListContext'
 const App = () => {
   return (
     <ThemeProvider>
       <PaperListProvider>
-        <Navbar />
-        <Outlet />
+        <ReviewListProvider>
+          <Navbar />
+          <Outlet />
+        </ReviewListProvider>
         <Footer />
       </PaperListProvider>
     </ThemeProvider>

@@ -36,7 +36,7 @@ const Upload = () => {
     setCourseCode('');
     setSemester('');
 
-    navigate("/upload-paper/approval");
+    navigate("/upload/paper/approval");
   };
 
   return (
@@ -117,8 +117,8 @@ const Upload = () => {
           type="submit"
           className={`rounded p-2 cursor-pointer font-semibold transition ${
             darkMode
-              ? "bg-green-600 text-white hover:bg-green-500"
-              : "bg-green-400 text-gray-900 hover:bg-green-500"
+              ? "bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
+              : "bg-gradient-to-r from-green-600 to-green-400 text-gray-900 hover:bg-green-500"
           }`}
         >
           Upload
