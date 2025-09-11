@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaUsers } from "react-icons/fa";
 import { ThemeContext } from "./store/ThemeContext";
 import { Link } from 'react-router-dom';
+import  Pic from '../assets/profilePic2.jpg';
 
 const MeetAdmin = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -20,7 +21,7 @@ const MeetAdmin = () => {
         {/* Profile Image */}
         <img
           className="w-[200px] h-[200px] object-cover rounded-full mx-auto border-4 border-gray-300"
-          src="/src/assets/profilePic2.jpg"
+          src={Pic}
           alt="Admin"
         />
         

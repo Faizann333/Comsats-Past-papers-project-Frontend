@@ -1,13 +1,18 @@
 import PaperCardList from "../components/paper/PaperCardList";
 import { FaSearchDollar } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { ThemeContext } from '../components/store/ThemeContext';
-import { PastPapersContext } from '../components/store/Paper-List-Store';
+import { PastPapersContext } from '../components/store/PaperListContext';
 
 const PastPapers = () => {
-  const { paperList } = useContext(PastPapersContext);
+  const { paperList , getPaper } = useContext(PastPapersContext);
   const { darkMode } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    getPaper();
+    console.log('paperlist',paperList)
+  },[]);
 
   const filteredPapers = paperList.filter((paper) =>
     paper.courseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||

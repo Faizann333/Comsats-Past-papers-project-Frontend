@@ -1,11 +1,14 @@
 import { createContext, useReducer } from "react";
+import { getReview } from "../../api/reviewApi";
 
 // Create Context
 export const ReviewListContext = createContext({
     reviewList: [],
     addReview: () => { },
+    getReviews: () => { },
     deleteReview: () => { },
     updateReview: () => { },
+
 });
 
 //  Reducer Function
@@ -13,6 +16,8 @@ const reviewListReducer = (currentReviewList, action) => {
     switch (action.type) {
         case "ADD_REVIEW":
             return [action.payload.reviewDetail, ...currentReviewList];
+        case "GET_REVIEW":
+            return [...action.payload.reviews];
         default:
             return currentReviewList;
     }
@@ -21,7 +26,8 @@ const reviewListReducer = (currentReviewList, action) => {
 //  Provider Component
 const ReviewListProvider = ({ children }) => {
     const [reviewList, dispatchReviewList] = useReducer(reviewListReducer, []);
-    console.log("Review List:", reviewList);
+  
+  
     // Add new review
     const addReview = (reviewDetail) => {
         dispatchReviewList({
@@ -29,13 +35,28 @@ const ReviewListProvider = ({ children }) => {
             payload: { reviewDetail },
         });
     };
+    const getReviews = async () => {
+        try {
+            const reviews = await getReview();
+            dispatchReviewList({
+                type: "GET_REVIEW",
+                payload: {
+                    reviews: reviews.data,
+                },
+            });
+        }
+        catch (error) {
+            console.error("Error fetching reviews:", error);
+        }
+    }
 
-    // 
+
     return (
         <ReviewListContext.Provider
             value={{
                 reviewList,
                 addReview,
+                getReviews,
             }}
         >
             {children}

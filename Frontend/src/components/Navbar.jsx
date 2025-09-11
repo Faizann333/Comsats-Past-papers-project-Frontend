@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link,useNavigate, NavLink } from "react-router-dom";
 import Button from "./Button";
 import { ThemeContext } from "./store/ThemeContext";
 import UploadDropdown from "./UploadDropdown";
 
 const Navbar = () => {
+  const Navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -132,6 +133,8 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <Button name="Log Out" />
+        <Button onClick={()=> Navigate('/login')} name="Login" />
+       
         
       </div>
     </header >

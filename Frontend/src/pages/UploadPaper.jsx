@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PastPapersContext } from '../components/store/Paper-List-Store';
+import { PastPapersContext } from '../components/store/PaperListContext';
 import { ThemeContext } from '../components/store/ThemeContext';
+import { postPaper } from '../api/paperApi';
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -14,20 +15,30 @@ const Upload = () => {
   const [courseCode, setCourseCode] = useState('');
   const [semester, setSemester] = useState('');
 
-  const handlePaperSubmit = (e) => {
+  const handlePaperSubmit = async (e) => {
     e.preventDefault();
+   try{
 
     const paperDetail = {
-      id: Date.now(),
       instructorName,
       examType,
       courseName,
       courseCode,
       semester,
-      status: 'pending'
+    };
+    const data = await postPaper(paperDetail);
+    console.log(data);
+
+    
+    const paperObj = {
+      instructorName: data.data.instructorName,
+      examType: data.data.examType,
+      courseName: data.data.courseName,
+      courseCode : data.data.courseCode,
+      semester : data.data.semester,
     };
 
-    addPaper(paperDetail);
+    addPaper(paperObj);
 
     // reset form
     setIntructorName('');
@@ -37,7 +48,10 @@ const Upload = () => {
     setSemester('');
 
     navigate("/upload/paper/approval");
-  };
+  } catch(err){
+    console.error("Error submitting paper:", err);
+   }
+}
 
   return (
     <div

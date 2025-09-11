@@ -1,7 +1,7 @@
 import React from 'react'
 import PaperCardList from "../components/paper/PaperCardList"
 
-import { PastPapersContext } from '../components/store/Paper-List-Store'
+import { PastPapersContext } from '../components/store/PaperListContext'
 import { useContext, useState } from "react";
 import { ThemeContext } from '../components/store/ThemeContext';
 const Home = () => {

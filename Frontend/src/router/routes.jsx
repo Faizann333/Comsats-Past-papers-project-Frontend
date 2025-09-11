@@ -9,6 +9,8 @@ import PortFolio from "../components/PortFolio.jsx"
 import UploadReview from "../pages/UploadReview.jsx"
 import Reviews from "../pages/Reviews.jsx"
 import Contributions from "../pages/Contributions.jsx"
+import Login from "../pages/Login.jsx"
+import SignUp from "../pages/SignUp.jsx"
 
 
 const router = createBrowserRouter([
@@ -24,11 +26,10 @@ const router = createBrowserRouter([
       { path: "/meet-admin", element: <MeetAdmin />},
       { path: "/meet-admin/portfolio", element: <PortFolio />},
       { path: "/contributions", element: <Contributions />},
+      { path: "/login", element: <Login />},
+      { path: "/signup", element: <SignUp />},
+
       
-
-
-
-
     ]
   },
 

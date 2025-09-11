@@ -8,7 +8,7 @@ const PaperCardList = ({ paperList }) => {
 
 
                 {paperList.map(paper => (
-                    <PaperCard key={paper.id} paper={paper} />
+                    <PaperCard key={paper._id} paper={paper} />
                 ))
             }
 

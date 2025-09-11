@@ -1,19 +1,23 @@
 import ReviewCardList from '../components/ReviewCardList'
 import { FaSearchDollar } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from '../components/store/ThemeContext';
 import { ReviewListContext } from '../components/store/ReviewListContext';
 
 const Reviews = () => {
-    const { reviewList } = useContext(ReviewListContext);
+    const { reviewList, getReviews } = useContext(ReviewListContext);
     const { darkMode } = useContext(ThemeContext);
     const [searchQuery, setSearchQuery] = useState('');
 
+    useEffect(() => {
+        getReviews();
+    }, []);
+ 
     const filteredReviews = reviewList.filter((review) =>
         review.instructorName.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    console.log(filteredReviews);
+
 
     return (
         <div
@@ -42,12 +46,12 @@ const Reviews = () => {
 
             <h1 className="text-center font-bold text-2xl mt-3 mb-4"> Teachers Reviews</h1>
 
-            {/* Papers List */}
+            {/* Papers List  */}
             {filteredReviews.length > 0 ? (
                 <ReviewCardList reviewList={filteredReviews} />
             ) : (
                 <h2 className="mt-6 text-lg font-medium text-gray-500">
-                     No Reviews Found
+                    No Reviews Found
                 </h2>
             )}
         </div>

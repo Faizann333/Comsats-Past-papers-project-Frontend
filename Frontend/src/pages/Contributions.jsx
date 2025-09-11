@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { PastPapersContext } from "../components/store/Paper-List-Store";
+import { PastPapersContext } from '../components/store/PaperListContext.jsx';
 
 import { ThemeContext } from '../components/store/ThemeContext';
 
