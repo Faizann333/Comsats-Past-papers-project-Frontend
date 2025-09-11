@@ -38,7 +38,7 @@ const MeetAdmin = () => {
             darkMode ? "text-gray-300" : "text-gray-600"
           } transition`}
         >
-          MERN Stack Developer | Developer of UniPastPapers | UnderGraduate Student at Comsats Wah
+          MERN Stack Developer | Developer of PastPapersPortal | UnderGraduate Student at Comsats Wah
         </p>
 
         {/* About */}
