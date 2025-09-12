@@ -10,7 +10,7 @@ export const postPaper = async (paperData) => {
 };
 
 export const getPapers = async () => {
-    return await apiClient("/user/papers", {
+    return await apiClient("/api/papers", {
         method: "GET",
     });
 }

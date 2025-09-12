@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PastPapersContext } from '../components/store/PaperListContext';
 import { ThemeContext } from '../components/store/ThemeContext';
-import { postPaper } from '../api/paperApi';
+import { postPaper } from '../apis/paperApi';
 
 const Upload = () => {
   const navigate = useNavigate();

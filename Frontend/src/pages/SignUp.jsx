@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { apiClient } from "../api/apiClient";
-import { postSignup } from "../api/authApi";
+import { apiClient } from "../apis/apiClient";
+import { postSignup } from "../apis/authApi";
 
 const SignUp = () => {
     const [name, setName] = useState("");

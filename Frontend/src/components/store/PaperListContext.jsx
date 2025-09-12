@@ -1,6 +1,6 @@
 
 import { createContext, useContext, useReducer } from 'react'
-import { getPapers} from '../../api/paperApi';
+import { getPapers} from '../../apis/paperApi';
 
 export const PastPapersContext = createContext({
   paperList: [],

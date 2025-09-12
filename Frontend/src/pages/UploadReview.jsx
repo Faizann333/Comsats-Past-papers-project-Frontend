@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../components/store/ThemeContext";
 import { ReviewListContext } from "../components/store/ReviewListContext";
-import { postReview } from "../api/reviewApi";
+import { postReview } from "../apis/reviewApi";
 
 const UploadReview = () => {
   const { addReview } = useContext(ReviewListContext)

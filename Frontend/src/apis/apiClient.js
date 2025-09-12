@@ -1,9 +1,13 @@
 // src/api/apiClient.js
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const apiClient = async (endpoint, options = {}) => {
+export const apiClient = async (url, options = {}) => {
   try {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const finalUrl = url.startsWith("/api")
+    ? url
+    : `${API_BASE_URL}${url}`;
+
+    const response = await fetch(finalUrl, {
       headers: {
         "Content-Type": "application/json",
         ...(options.headers || {}),
@@ -11,7 +15,7 @@ export const apiClient = async (endpoint, options = {}) => {
       ...options,
     });
 
-    // Handle non-2xx responses
+    
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || `Request failed: ${response.status}`);

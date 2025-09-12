@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { getReview } from "../../api/reviewApi";
+import { getReview } from "../../apis/reviewApi";
 
 // Create Context
 export const ReviewListContext = createContext({
