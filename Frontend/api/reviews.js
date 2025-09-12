@@ -1,5 +1,5 @@
-import { connectDB } from "../../lib/mongoose";
-import Review from "../../models/Review";
+import { connectDB } from "../lib/mongoose";
+import Review from "../models/review";
 
 export default async function handler(req, res) {
   await connectDB();
