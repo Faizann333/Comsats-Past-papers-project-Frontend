@@ -41,7 +41,7 @@ const ReviewListProvider = ({ children }) => {
             dispatchReviewList({
                 type: "GET_REVIEW",
                 payload: {
-                    reviews: reviews.data,
+                    reviews: reviews
                 },
             });
         }

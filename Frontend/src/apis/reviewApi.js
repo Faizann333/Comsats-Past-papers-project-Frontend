@@ -10,7 +10,7 @@ export const postReview = async (reviewData) => {
 };
 
 export const getReview = async () => {
-    return await apiClient("/user/reviews", {
+    return await apiClient("/api/reviews", {
         method: "GET",
     });
 };
