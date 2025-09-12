@@ -42,7 +42,7 @@ const PaperListProvider = ({ children }) => {
     const getPapersAction = {
       type: 'GET_PAPERS',
       payload: {
-        papers : papers.data
+        papers : papers
       }
     }
     dispatchPaperList(getPapersAction);
