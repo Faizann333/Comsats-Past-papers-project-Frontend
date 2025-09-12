@@ -5,14 +5,10 @@ import { ThemeContext } from '../components/store/ThemeContext';
 import { PastPapersContext } from '../components/store/PaperListContext';
 
 const PastPapers = () => {
-  const { paperList , getPaper } = useContext(PastPapersContext);
+  const { paperList  } = useContext(PastPapersContext);
   const { darkMode } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    getPaper();
-    console.log('paperlist',paperList)
-  },[]);
 
   const filteredPapers = paperList.filter((paper) =>
     paper.courseCode.toLowerCase().includes(searchQuery.toLowerCase()) ||

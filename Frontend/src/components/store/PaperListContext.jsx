@@ -1,6 +1,7 @@
 
 import { createContext, useContext, useReducer } from 'react'
 import { getPapers} from '../../apis/paperApi';
+import { useEffect } from 'react';
 
 export const PastPapersContext = createContext({
   paperList: [],
@@ -47,6 +48,11 @@ const PaperListProvider = ({ children }) => {
     }
     dispatchPaperList(getPapersAction);
   }
+
+  //fetching papers when app loads first time
+  useEffect(() => {
+    getPaper();
+  }, [])
 
   return (
     <PastPapersContext.Provider value={
