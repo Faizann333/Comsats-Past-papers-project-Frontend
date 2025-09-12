@@ -37,6 +37,7 @@ const PaperListProvider = ({ children }) => {
   //get papers from backend
   const getPaper = async () => {
     const papers = await getPapers();
+    console.log(papers);
 
     const getPapersAction = {
       type: 'GET_PAPERS',
