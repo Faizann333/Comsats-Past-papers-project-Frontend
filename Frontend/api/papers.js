@@ -1,5 +1,5 @@
-import { connectDB } from "../lib/mongoose";
-import Paper from "../models/paper";
+import { connectDB } from "../lib/mongoose.js";
+import Paper from "../models/paper.js";
 
 export default async function handler(req, res) {
   await connectDB();
