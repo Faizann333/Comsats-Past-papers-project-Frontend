@@ -1,14 +1,34 @@
 import React, { useState } from "react";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
+import { postLogin } from "../apis/authApi";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../components/store/AuthContext";
+
 const Login = () => {
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
+
+    try{
     e.preventDefault();
-    console.log("Login submitted:", { email, password });
-    // TODO: call login API here
+    const loginData = { email, password };
+    const response = await postLogin(loginData);
+    console.log("Login successful:", response);
+    
+     if (response.success) {
+      setUser(response.user);  // <-- update AuthContext immediately
+      
+      navigate("/");          
+    }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+    
   };
 
   return (

@@ -6,11 +6,13 @@ export const postPaper = async (paperData) => {
     return await apiClient("/user/papers", {
         method: "POST",
         body: JSON.stringify(paperData),
+         credentials: "include" 
     });
 };
 
 export const getPapers = async () => {
-    return await apiClient("/api/papers", {
+    return await apiClient("/user/papers", {
         method: "GET",
+        credentials: "include" 
     });
 }

@@ -3,11 +3,25 @@ import { Link,useNavigate, NavLink } from "react-router-dom";
 import Button from "./Button";
 import { ThemeContext } from "./store/ThemeContext";
 import UploadDropdown from "./UploadDropdown";
-
+import { postLogout } from "../apis/authApi";
+import { AuthContext } from "./store/AuthContext";
 const Navbar = () => {
-  const Navigate = useNavigate();
+  const {user,setUser} = useContext(AuthContext);
+  const navigate = useNavigate();
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const postLogoutHandle = async () => {
+    try {
+      const response = await postLogout();
+      console.log("Logout successful:", response);
+      setUser(null); // Clear user context on logout
+      navigate('/login');
+
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  }
 
   // Detect scroll
   useEffect(() => {
@@ -49,7 +63,7 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-
+        
           <li className="relative inline-block px-1">
             <NavLink
               to="/past-papers"
@@ -63,6 +77,9 @@ const Navbar = () => {
               Past Papers
             </NavLink>
           </li>
+
+         {user && (<>
+          
           <li className="relative inline-block px-1">
             <NavLink
               to="/reviews"
@@ -76,6 +93,9 @@ const Navbar = () => {
               Reviews
             </NavLink>
           </li>
+
+           
+          
           <li className="relative inline-block px-1">
             <NavLink
               to="/meet-admin"
@@ -89,7 +109,7 @@ const Navbar = () => {
               Meet Admin
             </NavLink>
           </li>
-          
+         
           <li className="relative inline-block px-1">
             <NavLink
               to="/contributions"
@@ -103,17 +123,23 @@ const Navbar = () => {
               Contributions
             </NavLink>
           </li>
+          
            <li>
             <UploadDropdown/>
           </li>
 
+          </>)}
         </ul>
       </nav>
-
+     
+     
 
       {/* Right-side buttons */}
       <div className="flex items-center gap-4">
         {/* Theme Toggle */}
+        {user &&
+     (
+     <>
         <button
           onClick={() => setDarkMode(!darkMode)}
           className={`px-3 py-1 rounded-md transition-colors duration-300
@@ -122,7 +148,8 @@ const Navbar = () => {
         >
           {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
-
+    
+        
         {/* Notification Bell */}
         <button className="relative">
           <span className="text-2xl">🔔</span>
@@ -130,10 +157,21 @@ const Navbar = () => {
             3
           </span>
         </button>
-
+        </> )}
+      
+      
         {/* Auth Buttons */}
-        <Button name="Log Out" />
-        <Button onClick={()=> Navigate('/login')} name="Login" />
+        {user ?
+        <Button name="Log Out" onClick={postLogoutHandle}/>
+        :
+        (
+        <>
+        
+        <Button onClick={()=> navigate('/login')} name="Login" />
+        <Button onClick={()=> navigate('/signup')} name="Signup" />
+        </>
+        )
+        }
        
         
       </div>

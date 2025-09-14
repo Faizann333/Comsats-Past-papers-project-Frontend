@@ -12,20 +12,22 @@ import Contributions from "../pages/Contributions.jsx"
 import Login from "../pages/Login.jsx"
 import SignUp from "../pages/SignUp.jsx"
 
+import ProtectedRoute from "./ProtectedRoute.jsx"
+
 
 const router = createBrowserRouter([
   {
     path: "/", element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/Past-Papers", element: <PastPapers /> },
-      { path: "/reviews", element: <Reviews />},
-      { path: "/upload/paper", element: <UploadPaper /> },
-      { path: "/upload/review", element: <UploadReview /> },
-      { path: "/upload/paper/approval", element: <Approval /> },
-      { path: "/meet-admin", element: <MeetAdmin />},
-      { path: "/meet-admin/portfolio", element: <PortFolio />},
-      { path: "/contributions", element: <Contributions />},
+      { path: "/Past-Papers", element: <ProtectedRoute> <PastPapers /></ProtectedRoute> },
+      { path: "/reviews", element:  <ProtectedRoute> <Reviews /></ProtectedRoute> },
+      { path: "/upload/paper", element: <ProtectedRoute><UploadPaper /></ProtectedRoute> },
+      { path: "/upload/review", element: <ProtectedRoute><UploadReview /> </ProtectedRoute>},
+      { path: "/upload/paper/approval", element:<ProtectedRoute> <Approval /></ProtectedRoute> },
+      { path: "/meet-admin", element: <ProtectedRoute> <MeetAdmin /></ProtectedRoute>},
+      { path: "/meet-admin/portfolio", element:  <ProtectedRoute><PortFolio /></ProtectedRoute>},
+      { path: "/contributions", element:  <ProtectedRoute><Contributions /></ProtectedRoute>},
       { path: "/login", element: <Login />},
       { path: "/signup", element: <SignUp />},
 

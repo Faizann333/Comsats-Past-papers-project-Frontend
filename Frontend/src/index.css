@@ -15,3 +15,22 @@
   75%  { border-image-source: linear-gradient(to top, #a855f7, #ec4899, #22c55e, #3b82f6); }
   100% { border-image-source: linear-gradient(to right, #a855f7, #ec4899, #22c55e, #3b82f6); }
 }
+
+@keyframes orbit1 {
+  0%   { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@keyframes orbit2 {
+  0%   { transform: rotate(120deg) translateX(40px) rotate(-120deg); }
+  100% { transform: rotate(480deg) translateX(40px) rotate(-480deg); }
+}
+
+@keyframes orbit3 {
+  0%   { transform: rotate(240deg) translateX(40px) rotate(-240deg); }
+  100% { transform: rotate(600deg) translateX(40px) rotate(-600deg); }
+}
+
+.animate-orbit1 { animation: orbit1 1.8s linear infinite; }
+.animate-orbit2 { animation: orbit2 1.8s linear infinite; }
+.animate-orbit3 { animation: orbit3 1.8s linear infinite; }

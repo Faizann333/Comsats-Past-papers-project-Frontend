@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   await connectDB();
 
   if (req.method === "GET") {
-    const papers = await Paper.find({});
+    const papers = await Paper.find({}).sort({ createdAt: -1 });
     return res.status(200).json(papers);
   }
 

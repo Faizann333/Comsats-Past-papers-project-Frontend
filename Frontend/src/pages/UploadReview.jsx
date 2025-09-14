@@ -3,10 +3,12 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../components/store/ThemeContext";
 import { ReviewListContext } from "../components/store/ReviewListContext";
 import { postReview } from "../apis/reviewApi";
+import  {AuthContext} from "../components/store/AuthContext"
 
 const UploadReview = () => {
   const { addReview } = useContext(ReviewListContext)
   const { darkMode } = useContext(ThemeContext);
+  const {user} =  useContext(AuthContext)
   
   const [instructorName, setIntructorName] = useState("");
   const [courseName, setCourseName] = useState("");
@@ -20,7 +22,10 @@ const UploadReview = () => {
       const reviewData = {
         instructorName,
         courseName,
-        review
+        review,
+        uploaderName: user.name,
+        uploaderReg: user.registrationNumber
+
       };
       const data = await postReview(reviewData);
       console.log(data);

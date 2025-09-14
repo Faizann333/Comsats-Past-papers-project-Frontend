@@ -9,3 +9,27 @@ export const postSignup = async (signupData) => {
         body: JSON.stringify(signupData),
     });
 }
+
+//Post Login Function
+export const postLogin = async (loginData) => {
+    return await apiClient("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        credentials: "include" 
+    });
+}
+
+//post logout function
+export const postLogout = async () => {
+    return await apiClient("/auth/logout", {
+        method: "POST",
+        credentials: "include" 
+    });
+}
+
+export const getMe = async () => {
+    return await apiClient("/auth/me", {
+        method: "GET",
+        credentials: "include"
+    });
+}

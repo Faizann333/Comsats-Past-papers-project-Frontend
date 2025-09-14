@@ -3,8 +3,10 @@ import { FaSearchDollar } from "react-icons/fa";
 import { useContext, useState,useEffect } from "react";
 import { ThemeContext } from '../components/store/ThemeContext';
 import { PastPapersContext } from '../components/store/PaperListContext';
+import Loader from "../components/loader/Loader";
 
 const PastPapers = () => {
+  const { loading } = useContext(PastPapersContext);
   const { paperList  } = useContext(PastPapersContext);
   const { darkMode } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +18,10 @@ const PastPapers = () => {
     paper.instructorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
     paper.examType.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+   if (loading) {
+    return <Loader />; // show loader while fetching papers
+  }
 
   return (
     <div
@@ -48,6 +54,7 @@ const PastPapers = () => {
       {filteredPapers.length > 0 ? (
         <PaperCardList paperList={filteredPapers} />
       ) : (
+       
         <h2 className="mt-6 text-lg font-medium text-gray-500">
            No Papers Found
         </h2>

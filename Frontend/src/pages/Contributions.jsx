@@ -9,7 +9,7 @@ const Contributions = () => {
 
   // Count contributions per user
   const contributionCount = paperList.reduce((acc, paper) => {
-    acc[paper.instructorName] = (acc[paper.instructorName] || 0) + 1;
+    acc[paper.uploader] = (acc[paper.uploader] || 0) + 1;
     return acc;
   }, {});
 

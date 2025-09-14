@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer ,useState} from "react";
 import { getReview } from "../../apis/reviewApi";
 
 // Create Context
@@ -26,7 +26,7 @@ const reviewListReducer = (currentReviewList, action) => {
 //  Provider Component
 const ReviewListProvider = ({ children }) => {
     const [reviewList, dispatchReviewList] = useReducer(reviewListReducer, []);
-  
+    const [loading, setLoading] = useState(true);
   
     // Add new review
     const addReview = (reviewDetail) => {
@@ -41,12 +41,14 @@ const ReviewListProvider = ({ children }) => {
             dispatchReviewList({
                 type: "GET_REVIEW",
                 payload: {
-                    reviews: reviews
+                    reviews: reviews.data
                 },
             });
         }
         catch (error) {
             console.error("Error fetching reviews:", error);
+        }finally{
+            setLoading(false);
         }
     }
 
@@ -57,6 +59,7 @@ const ReviewListProvider = ({ children }) => {
                 reviewList,
                 addReview,
                 getReviews,
+                loading
             }}
         >
             {children}

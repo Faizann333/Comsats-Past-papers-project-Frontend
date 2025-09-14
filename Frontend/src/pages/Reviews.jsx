@@ -3,8 +3,10 @@ import { FaSearchDollar } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from '../components/store/ThemeContext';
 import { ReviewListContext } from '../components/store/ReviewListContext';
+import Loader from '../components/loader/Loader';
 
 const Reviews = () => {
+    const { loading } = useContext(ReviewListContext);
     const { reviewList, getReviews } = useContext(ReviewListContext);
     const { darkMode } = useContext(ThemeContext);
     const [searchQuery, setSearchQuery] = useState('');
@@ -18,6 +20,9 @@ const Reviews = () => {
     );
 
 
+    if (loading) {
+        return <Loader/>; // show loader while fetching papers
+    }
 
     return (
         <div

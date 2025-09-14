@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
             Uploaded
           </span>
           <span className="text-xs italic opacity-80">
-            by {review.uploader || "SP25-CSE-41"}
+            by {review.uploaderName}
           </span>
         </div>
 

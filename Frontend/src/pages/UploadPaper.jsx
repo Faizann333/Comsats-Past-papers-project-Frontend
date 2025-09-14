@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { PastPapersContext } from '../components/store/PaperListContext';
 import { ThemeContext } from '../components/store/ThemeContext';
 import { postPaper } from '../apis/paperApi';
+import { AuthContext } from '../components/store/AuthContext';
 
 const Upload = () => {
   const navigate = useNavigate();
   const { addPaper } = useContext(PastPapersContext);
   const { darkMode } = useContext(ThemeContext);
+    const { user } = useContext(AuthContext);
 
   const [instructorName, setIntructorName] = useState('');
   const [examType, setExamType] = useState('');
@@ -19,15 +21,16 @@ const Upload = () => {
     e.preventDefault();
    try{
 
+   
     const paperDetail = {
       instructorName,
       examType,
       courseName,
       courseCode,
       semester,
+      uploader: user.registrationNumber
     };
     const data = await postPaper(paperDetail);
-    console.log(data);
 
     
     const paperObj = {
@@ -36,6 +39,7 @@ const Upload = () => {
       courseName: data.data.courseName,
       courseCode : data.data.courseCode,
       semester : data.data.semester,
+      uploader: data.data.uploader,
     };
 
     addPaper(paperObj);

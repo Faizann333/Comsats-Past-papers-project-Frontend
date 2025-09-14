@@ -1,7 +1,7 @@
 
 import { createContext, useContext, useReducer } from 'react'
 import { getPapers} from '../../apis/paperApi';
-import { useEffect } from 'react';
+import { useEffect ,useState } from 'react';
 
 export const PastPapersContext = createContext({
   paperList: [],
@@ -23,6 +23,7 @@ const paperListReducer = (currentPaperList, action) => {
 
 const PaperListProvider = ({ children }) => {
   const [paperList, dispatchPaperList] = useReducer(paperListReducer, []);
+  const [loading, setLoading] = useState(true);
   
 
   const addPaper = (paperDetail) => {
@@ -37,18 +38,23 @@ const PaperListProvider = ({ children }) => {
 
   //get papers from backend
   const getPaper = async () => {
+    try{
     const papers = await getPapers();
     console.log(papers);
 
     const getPapersAction = {
       type: 'GET_PAPERS',
       payload: {
-        papers : papers
+        papers : papers.data
       }
     }
     dispatchPaperList(getPapersAction);
+  } catch(err){
+    console.error("Error fetching papers:", err);
+   } finally {
+    setLoading(false);
   }
-
+  }
   //fetching papers when app loads first time
   useEffect(() => {
     getPaper();
@@ -59,8 +65,8 @@ const PaperListProvider = ({ children }) => {
       {
         addPaper,
         paperList,
-        getPaper
-
+        getPaper,
+         loading
       }
     }>
       {children}

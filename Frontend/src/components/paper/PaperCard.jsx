@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { ThemeContext } from "../store/ThemeContext";
+import { AuthContext } from "../store/AuthContext";
 
 const PaperCard = ({ paper }) => {
+
   const { darkMode } = useContext(ThemeContext);
 
   return (
@@ -25,7 +27,7 @@ const PaperCard = ({ paper }) => {
         {/* Thumbnail */}
         <img
           className="w-full h-[150px] object-cover rounded-t-2xl"
-          src="https://tse3.mm.bing.net/th/id/OIP.vopfuJOGYkOQaB1uyRcF2QHaHa?pid=Api&P=0&h=180"
+          src="https://tse4.mm.bing.net/th/id/OIP.CP4miLwLcuVjZcEJ453NuAHaFj?pid=Api&P=0&h=180"
           alt="Past Paper"
         />
 
@@ -40,7 +42,7 @@ const PaperCard = ({ paper }) => {
               Uploaded
             </span>
             <span className="text-xs italic opacity-80">
-              by {paper.uploader || "Faizan"}
+              by {paper.uploader}
             </span>
           </div>
 

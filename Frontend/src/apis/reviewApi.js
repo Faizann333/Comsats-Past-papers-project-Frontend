@@ -6,11 +6,13 @@ export const postReview = async (reviewData) => {
     return await apiClient("/user/reviews", {
         method: "POST",
         body: JSON.stringify(reviewData),
+        credentials: "include",
     });
 };
 
 export const getReview = async () => {
-    return await apiClient("/api/reviews", {
+    return await apiClient("/user/reviews", {
         method: "GET",
+        credentials: "include",
     });
 };
