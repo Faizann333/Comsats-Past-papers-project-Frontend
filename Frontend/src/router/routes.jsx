@@ -12,7 +12,14 @@ import Contributions from "../pages/Contributions.jsx"
 import Login from "../pages/Login.jsx"
 import SignUp from "../pages/SignUp.jsx"
 
+//Admin Components 
+
+import Dashboard from "../pages/Admin/Dashboard.jsx"
+
 import ProtectedRoute from "./ProtectedRoute.jsx"
+import AdminUsers from "../pages/Admin/Users.jsx"
+import AdminReviews from "../pages/Admin/Reviews.jsx"
+import AdminPapers from "../pages/Admin/Papers.jsx"
 
 
 const router = createBrowserRouter([
@@ -30,6 +37,14 @@ const router = createBrowserRouter([
       { path: "/contributions", element:  <ProtectedRoute><Contributions /></ProtectedRoute>},
       { path: "/login", element: <Login />},
       { path: "/signup", element: <SignUp />},
+
+
+      //Admin panel  paths
+      {path: "/admin/dashboard", element: <Dashboard/> },
+      {path: "/admin/users", element: <AdminUsers/> },
+      {path: "/admin/reviews", element: <AdminReviews/> },
+      {path: "/admin/papers", element: <AdminPapers/> }
+      
 
       
     ]

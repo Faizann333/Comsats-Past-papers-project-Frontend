@@ -44,10 +44,13 @@ const Home = () => {
         className={`text-center font-bold text-2xl p-3 mt-7 mb-7
         ${darkMode ? "text-gray-100" : "text-gray-900"}`}
       >
-        {paperList.length > 0
+        Here are Latest Uploaded Papers
+        </h2>
+        {/* {paperList.length > 0
           ? "Here are Latest Uploaded Papers"
           : "No papers Found"}
-      </h2>
+      </h2> */}
+
 
       <PaperCardList paperList={latestPapers} />
     </div>

@@ -7,6 +7,7 @@ export const postSignup = async (signupData) => {
     return await apiClient("/auth/signup", {
         method: "POST",
         body: JSON.stringify(signupData),
+        credentials: "include"
     });
 }
 

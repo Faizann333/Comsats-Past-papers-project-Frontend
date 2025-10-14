@@ -29,7 +29,7 @@ const PastPapers = () => {
       ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"}`}
     >
       {/* Search Bar */}
-      <div className="relative w-[600px]">
+      <div className="relative w-[300px] sm:w-[600px]">
 
         <FaSearchDollar className={`absolute left-3 top-1/2 transform -translate-y-1/2 text-lg
     ${darkMode ? "text-gray-400" : "text-gray-500"}`}
@@ -37,12 +37,12 @@ const PastPapers = () => {
         <input
           onChange={(e) => setSearchQuery(e.target.value)}
           value={searchQuery}
-          className={`w-full p-2 pl-10 rounded-md border focus:outline-none focus:ring-2 transition-colors duration-300
+          className={`w-full p-2 pl-10 rounded-md border placeholder:text-xs sm:placeholder:text-lg  focus:outline-none focus:ring-2 transition-colors duration-300
       ${darkMode
               ? "bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:ring-green-500"
-              : "bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-green-400"}`}
+              : "bg-white border-gray-300 text-black placeholder-gray-500  focus:ring-green-400"}`}
           type="text"
-          placeholder="Search by Course, Instructor, Exam Type, or Code"
+          placeholder="Search by Course, Instructor, Code or Exam Type"
         />
       </div>
 

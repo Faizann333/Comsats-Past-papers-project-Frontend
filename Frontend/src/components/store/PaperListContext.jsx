@@ -6,7 +6,8 @@ import { useEffect ,useState } from 'react';
 export const PastPapersContext = createContext({
   paperList: [],
   addPaper: () => { },
-  getPaper: () => { }
+  getPaper: () => { },
+
 })
 
 const paperListReducer = (currentPaperList, action) => {

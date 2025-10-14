@@ -5,7 +5,7 @@ const ReviewCard = ({ review }) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div className="relative h-[290px] w-[350px] rounded-2xl p-[5px] overflow-hidden">
+    <div className="relative h-[300px] w-[340px] rounded-2xl p-[5px] overflow-hidden">
       {/* Inner card */}
       <div
         className={`relative z-10 h-full w-full rounded-2xl shadow-lg border transition-all duration-300 

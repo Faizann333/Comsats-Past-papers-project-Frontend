@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../components/store/ThemeContext";
 import { ReviewListContext } from "../components/store/ReviewListContext";
@@ -6,6 +6,7 @@ import { postReview } from "../apis/reviewApi";
 import  {AuthContext} from "../components/store/AuthContext"
 
 const UploadReview = () => {
+  const navigate = useNavigate()
   const { addReview } = useContext(ReviewListContext)
   const { darkMode } = useContext(ThemeContext);
   const {user} =  useContext(AuthContext)
@@ -41,6 +42,8 @@ const UploadReview = () => {
       setIntructorName("")
       setCourseName('')
       setReview("")
+
+      navigate('/reviews')
     } catch (error) {
       console.error("Error submitting review:", error);
     }

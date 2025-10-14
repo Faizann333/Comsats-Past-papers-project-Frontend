@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../components/Button";
 import { postLogin } from "../apis/authApi";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ const Login = () => {
     console.log("Login successful:", response);
     
      if (response.success) {
+      
       setUser(response.user);  // <-- update AuthContext immediately
       
       navigate("/");          

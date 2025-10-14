@@ -5,7 +5,7 @@ import ReviewCard from "./ReviewCard";
 const ReviewCardList = ({reviewList}) => {
 
     return (
-        <div className='p-3 flex gap-4 justify-center flex-wrap'>
+        <div className='p-3 pl-16 flex gap-4 justify-center flex-wrap'>
                 {reviewList.map(review => (
                     <ReviewCard key={review._id} review={review} />
                 ))

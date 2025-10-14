@@ -30,7 +30,7 @@ const Reviews = () => {
       ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"}`}
         >
             {/* Search Bar */}
-            <div className="relative w-[600px]">
+            <div className="relative w-[330px] sm:w-[600px]">
 
                 <FaSearchDollar className={`absolute left-3 top-1/2 transform -translate-y-1/2 text-lg
     ${darkMode ? "text-gray-400" : "text-gray-500"}`}

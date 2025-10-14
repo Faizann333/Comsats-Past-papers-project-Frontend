@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { apiClient } from "../apis/apiClient";
 import { postSignup } from "../apis/authApi";
+import { useContext } from "react";
+import { AuthContext } from "../components/store/AuthContext";
+
 
 const SignUp = () => {
+    const {setUser} = useContext(AuthContext)
+    const navigate = useNavigate()
     const [name, setName] = useState("");
     const [registrationNumber, setRegistrationNumber] = useState("");
     const [watsappNumber, setWatsappNumber] = useState("");
@@ -13,20 +18,26 @@ const SignUp = () => {
 
     console.log(name, registrationNumber, watsappNumber, email, password, confirmPassword);
 
-    const signupData={
+    const signupData = {
         name,
         registrationNumber,
         watsappNumber,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        role : "user"
     }
     const handleSignup = async (e) => {
 
         e.preventDefault();
         try {
-            const response = await postSignup({...signupData})
+            const response = await postSignup({ ...signupData })
             console.log("Signup successful:", response);
+            if (response.success) {
+                setUser(response.user);  // <-- update AuthContext immediately
+
+                navigate("/");
+            }
         }
         catch (error) {
             console.error("Signup error:", error);
@@ -61,7 +72,7 @@ const SignUp = () => {
 
                         <input
                             onChange={(e) => setRegistrationNumber(e.target.value)}
-                         
+
                             type="text"
                             placeholder="Enter your Uni Reg No"
                             className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
@@ -74,7 +85,7 @@ const SignUp = () => {
 
                         <input
                             onChange={(e) => setWatsappNumber(e.target.value)}
-                           
+
                             type="text"
                             placeholder="Enter your Watsapp No"
                             className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
