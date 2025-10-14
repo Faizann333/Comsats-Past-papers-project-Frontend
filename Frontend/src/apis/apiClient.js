@@ -4,18 +4,20 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const apiClient = async (url, options = {}) => {
   try {
     const finalUrl = url.startsWith("/api")
-    ? url
-    : `${API_BASE_URL}${url}`;
+      ? url
+      : `${API_BASE_URL}${url}`;
 
     const response = await fetch(finalUrl, {
+      // ✅ Add conditional Content-Type
       headers: {
-        "Content-Type": "application/json",
+        ...(options.body instanceof FormData
+          ? {} // skip header for FormData
+          : { "Content-Type": "application/json" }),
         ...(options.headers || {}),
       },
       ...options,
     });
 
-    
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(errorData.message || `Request failed: ${response.status}`);
@@ -24,6 +26,6 @@ export const apiClient = async (url, options = {}) => {
     return await response.json();
   } catch (error) {
     console.error("API Error:", error);
-    throw error; 
+    throw error;
   }
 };

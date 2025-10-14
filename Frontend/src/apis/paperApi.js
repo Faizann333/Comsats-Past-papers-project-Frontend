@@ -10,6 +10,14 @@ export const postPaper = async (paperData) => {
     });
 };
 
+export const postFile = async (fileData) => {
+    return await apiClient("/user/FileUpload", {
+        method: "POST",
+        body: fileData,
+         credentials: "include" 
+    });
+}
+
 export const getPapers = async () => {
     return await apiClient("/user/papers", {
         method: "GET",
