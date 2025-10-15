@@ -5,6 +5,8 @@ import { ThemeContext } from '../components/store/ThemeContext';
 import { postPaper } from '../apis/paperApi';
 import { AuthContext } from '../components/store/AuthContext';
 import { jsPDF } from "jspdf"; // 🆕 for PDF generation
+import Loader from '../components/loader/Loader';
+
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -18,6 +20,8 @@ const Upload = () => {
   const [courseCode, setCourseCode] = useState('');
   const [semester, setSemester] = useState('');
   const [files, setFiles] = useState([]);
+  const [loading, setLoading] = useState(true); //  loader state
+
 
   // 🆕 Helper: Convert File to Base64
   const readImageAsDataURL = (file) => {
@@ -30,6 +34,7 @@ const Upload = () => {
   };
 
   const handlePaperSubmit = async (e) => {
+    setLoading(false)
     e.preventDefault();
     try {
       if (!files.length) return alert("Please select at least one image file.");
@@ -54,7 +59,8 @@ const Upload = () => {
       formData.append("file", pdfFile);
       formData.append("upload_preset", "Past_Paper_Project"); // 🧩 replace with your Cloudinary preset
       formData.append("folder", "past_papers"); // optional folder name
-
+       
+      
       const cloudinaryResponse = await fetch(
         "https://api.cloudinary.com/v1_1/dc7tstzyu/auto/upload", // 🧩 replace with your cloud name
         {
@@ -66,7 +72,8 @@ const Upload = () => {
       const cloudData = await cloudinaryResponse.json();
       if (!cloudData.secure_url) throw new Error("Cloudinary upload failed");
 
-      const fileUrl = cloudData.secure_url;
+       let fileUrl="";
+        fileUrl = cloudData.secure_url;
       console.log("✅ Uploaded PDF URL:", fileUrl);
 
       // 🧾 Step 3: Post paper details to your backend
@@ -89,6 +96,7 @@ const Upload = () => {
         courseCode: data.data.courseCode,
         semester: data.data.semester,
         uploader: data.data.uploader,
+        fileUrl: data.data.fileUrl,
       };
 
       addPaper(paperObj);
@@ -100,12 +108,16 @@ const Upload = () => {
       setCourseCode('');
       setSemester('');
       setFiles([]);
-
-      navigate("/upload/paper/approval");
+   
+        navigate("/upload/paper/approval");
+      
     } catch (err) {
       console.error("Error submitting paper:", err);
       alert("Upload failed. Check console for details.");
-    }
+    } finally {
+    setLoading(true); // ✅ stop loader
+  }
+
   };
 
   return (
@@ -118,7 +130,7 @@ const Upload = () => {
 
       <form
         onSubmit={handlePaperSubmit}
-        className={`flex flex-col w-[320px] min-h-[320px] rounded p-4 gap-3 shadow-md transition-colors duration-500 ${
+        className={`flex flex-col w-[350px] min-h-[320px] rounded p-4 gap-3 shadow-md transition-colors duration-500 ${
           darkMode ? "bg-gray-800 border border-gray-700" : "bg-white border border-gray-300"
         }`}
       >
@@ -202,8 +214,9 @@ const Upload = () => {
               ? "bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
               : "bg-gradient-to-r from-green-600 to-green-400 text-gray-900 hover:bg-green-500"
           }`}
+          disabled={!loading} // disable button when loading
         >
-          Upload
+           {!loading ? "Uploading... Wait a Bit" : "Upload"}
         </button>
       </form>
     </div>

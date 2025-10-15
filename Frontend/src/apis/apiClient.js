@@ -19,8 +19,13 @@ export const apiClient = async (url, options = {}) => {
     });
 
     if (!response.ok) {
+      // ✅ Preserve backend validation errors
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `Request failed: ${response.status}`);
+      throw {
+        message: errorData.message || `Request failed: ${response.status}`,
+        errors: errorData.errors || [],
+        status: response.status
+      };
     }
 
     return await response.json();
