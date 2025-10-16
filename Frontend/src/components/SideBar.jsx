@@ -1,7 +1,11 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef , useContext} from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import UploadDropdown from "./UploadDropdown";
+import { ThemeContext } from "./store/ThemeContext";
+
 const SideBar = forwardRef((props, ref) => {
+
+    const { darkMode } = useContext(ThemeContext);
     return (
         <div ref={ref} className="h-[600px] w-[130px] flex flex-col items-center shadow-2xl shadow-purple-600  bg-gray-800 absolute top-[100px] left-0 z-50">
             <ul className='flex flex-col items-center gap-3 pt-2 cursor-pointer'>

@@ -157,9 +157,9 @@ const Navbar = () => {
               <NavLink
                 to="/contributions"
                 className={({ isActive }) =>
-                  `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
-       before:h-[2px] before:w-0 before:transition-all before:duration-300  md:hidden
-       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+                  `hidden lg:relative  px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300  
+              ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
        ${isActive ? "before:w-full" : "hover:before:w-full"}`
                 }
               >
@@ -167,7 +167,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="md:hidden">
+            <li className="hidden lg:inline-block">
               <UploadDropdown />
             </li>
 
