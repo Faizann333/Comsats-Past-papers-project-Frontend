@@ -53,12 +53,12 @@ const Upload = () => {
 
       const pdfBlob = pdf.output("blob");
 
-      // 🆕 Step 2: Upload PDF to Cloudinary directly from frontend
+      //  Step 2: Upload PDF to Cloudinary directly from frontend
       const formData = new FormData();
       const pdfFile = new File([pdfBlob], "past_paper.pdf", { type: "application/pdf" });
       formData.append("file", pdfFile);
-      formData.append("upload_preset", "Past_Paper_Project"); // 🧩 replace with your Cloudinary preset
-      formData.append("folder", "past_papers"); // optional folder name
+      formData.append("upload_preset", "Past_Paper_Project"); //  Cloudinary preset
+      formData.append("folder", "past_papers"); //  folder name in cloudinary
        
       
       const cloudinaryResponse = await fetch(

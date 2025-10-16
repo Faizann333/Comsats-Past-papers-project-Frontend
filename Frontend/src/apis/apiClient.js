@@ -10,11 +10,9 @@ export const apiClient = async (url, options = {}) => {
     const response = await fetch(finalUrl, {
       // ✅ Add conditional Content-Type
       headers: {
-        ...(options.body instanceof FormData
-          ? {} // skip header for FormData
-          : { "Content-Type": "application/json" }),
-        ...(options.headers || {}),
-      },
+  ...((options.body && !(options.body instanceof FormData)) ? { "Content-Type": "application/json" } : {}),
+  ...(options.headers || {}),
+},
       ...options,
     });
 
