@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext,useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import Button from "./Button";
 import { FiAlignJustify } from "react-icons/fi";
@@ -13,8 +13,8 @@ const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-   const sidebarRef = useRef(null);
-    const toggleButtonRef = useRef(null);
+  const sidebarRef = useRef(null);
+  const toggleButtonRef = useRef(null);
   const postLogoutHandle = async () => {
     try {
       const response = await postLogout();
@@ -42,10 +42,10 @@ const Navbar = () => {
   }, []);
 
   //sidebar functunality
-    useEffect(() => {
-   const handleClickOutside = (event) => {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target) && toggleButtonRef.current
-    &&  !toggleButtonRef.current.contains(event.target)) {
+        && !toggleButtonRef.current.contains(event.target)) {
         setIsSidebarOpen(false);
       }
     };
@@ -58,42 +58,42 @@ const Navbar = () => {
 
   return (
     <header
-      className={`h-[100px] sticky top-[-21px] z-50 w-full flex justify-between items-center p-10
+      className={`h-[100px] sticky top-[-21px] z-50 w-full flex justify-between items-center p-3
     transition-all duration-300 ease-in-out 
     ${darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-black"}
-    ${isScrolled ? "shadow-xl" : "shadow-none"}
+    ${isScrolled ? "shadow-xl" : "shadow-none"}   sm:p-10
   `}
     >
       <div className="flex items-center justify-center gap-4">
         {/* 3-lines icon */}
-        {user && 
-        <button
-         ref={toggleButtonRef}
-          onClick={() => {
-         
-              setIsSidebarOpen(prev=>(!prev))
-            
-          }}
-          className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
-        >
-          <FiAlignJustify className="font-bold text-2xl"/>
-        </button>
+        {user &&
+          <button
+            ref={toggleButtonRef}
+            onClick={() => {
+
+              setIsSidebarOpen(prev => (!prev))
+
+            }}
+            className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            <FiAlignJustify className="font-bold text-2xl" />
+          </button>
         }
 
         {/* Logo */}
-        <h1 className="font-bold text-2xl">LOGO</h1>
+        <h1 className="font-bold text-2xl ">📚</h1>
       </div>
       {isSidebarOpen &&
 
-        
-         <SideBar  ref={sidebarRef} />
-        }
+
+        <SideBar ref={sidebarRef} />
+      }
 
 
       {/* Navigation Links */}
       <nav className="flex items-center">
         <ul className="flex gap-6 items-center">
-          <li className="relative inline-block px-1">
+          <li className="hidden sm:block relative  px-1">
             <NavLink
               to="/"
               className={({ isActive }) =>
