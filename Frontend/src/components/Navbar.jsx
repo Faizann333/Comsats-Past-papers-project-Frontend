@@ -107,7 +107,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li className="relative inline-block px-1">
+          <li className="hidden sm:block relative  px-1 ">
             <NavLink
               to="/past-papers"
               className={({ isActive }) =>
@@ -123,7 +123,7 @@ const Navbar = () => {
 
           {user && (<>
 
-            <li className="relative inline-block px-1">
+            <li className="hidden sm:block relative px-1">
               <NavLink
                 to="/reviews"
                 className={({ isActive }) =>
@@ -139,7 +139,7 @@ const Navbar = () => {
 
 
 
-            <li className="hidden md:relative px-1">
+            <li className="hidden md:block  relative px-1">
               <NavLink
                 to="/meet-admin"
                 className={({ isActive }) =>
@@ -153,7 +153,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className=" hidden lg:relative px-1 ">
+            <li className=" hidden lg:block  relative px-1 ">
               <NavLink
                 to="/contributions"
                 className={({ isActive }) =>
