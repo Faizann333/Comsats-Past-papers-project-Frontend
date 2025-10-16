@@ -9,12 +9,27 @@ const SideBar = forwardRef((props, ref) => {
     return (
         <div ref={ref} className="h-[600px] w-[130px] flex flex-col items-center shadow-2xl shadow-purple-600  bg-gray-800 absolute top-[100px] left-0 z-50">
             <ul className='flex flex-col items-center gap-3 pt-2 cursor-pointer'>
-                 <li className="relative inline-block px-1 md:hidden">
+
+                 <li className=" relative px-1 md:hidden">
+              <NavLink
+                to="/meet-admin"
+                className={({ isActive }) =>
+                  `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
+       ${isActive ? "before:w-full" : "hover:before:w-full"}`
+                }
+              >
+                Meet Admin
+              </NavLink>
+            </li>
+
+                 <li className="relative inline-block px-1 lg:hidden">
                               <NavLink
                                 to="/contributions"
                                 className={({ isActive }) =>
                                   `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
-                       before:h-[2px] before:w-0 before:transition-all before:duration-300 lg:hidden
+                       before:h-[2px] before:w-0 before:transition-all before:duration-300 
                        ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
                        ${isActive ? "before:w-full" : "hover:before:w-full"}`
                                 }

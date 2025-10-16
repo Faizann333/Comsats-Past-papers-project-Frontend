@@ -139,7 +139,7 @@ const Navbar = () => {
 
 
 
-            <li className="relative inline-block px-1">
+            <li className="hidden md:relative px-1">
               <NavLink
                 to="/meet-admin"
                 className={({ isActive }) =>
