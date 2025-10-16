@@ -153,12 +153,12 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="relative inline-block px-1">
+            <li className="relative inline-block px-1 md:hidden">
               <NavLink
                 to="/contributions"
                 className={({ isActive }) =>
                   `relative inline-block px-1 before:content-[''] before:absolute before:-bottom-1 before:left-0 
-       before:h-[2px] before:w-0 before:transition-all before:duration-300 
+       before:h-[2px] before:w-0 before:transition-all before:duration-300  md:hidden
        ${darkMode ? "before:bg-purple-500" : "before:bg-black"} 
        ${isActive ? "before:w-full" : "hover:before:w-full"}`
                 }
@@ -167,7 +167,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li>
+            <li className="md:hidden">
               <UploadDropdown />
             </li>
 
@@ -194,7 +194,7 @@ const Navbar = () => {
 
 
               {/* Notification Bell */}
-              <button className="relative">
+              <button className="relative hidden">
                 <span className="text-2xl">🔔</span>
                 <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-1 rounded-full">
                   3
