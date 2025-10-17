@@ -72,23 +72,7 @@ const MeetAdmin = () => {
           </a>
         </div>
 
-        {/* portfiolio link */}
-
-        <div className="mt-6">
-          <Link
-            to="/meet-admin/portfolio"
-         
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
-              darkMode
-                ?"bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
-                : "bg-gradient-to-r from-green-600 to-green-400 text-white hover:bg-green-900"
-            }`}
-          >
-            <FaUsers className="text-lg" />
-            My PortFolio
-          </Link>
-        </div>
-
+        
         {/* Official Group Link */}
         <div className="mt-3">
           <a
@@ -105,6 +89,24 @@ const MeetAdmin = () => {
             Join Our Official Group
           </a>
         </div>
+
+        {/* portfiolio link */}
+
+         <div className="mt-6">
+          <Link
+            to="/meet-admin/portfolio"
+         
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition ${
+              darkMode
+                ?"bg-gradient-to-r from-purple-800 to-purple-400 text-white hover:bg-purple-500"
+                : "bg-gradient-to-r from-green-600 to-green-400 text-white hover:bg-green-900"
+            }`}
+          >
+            <FaUsers className="text-lg" />
+            My PortFolio
+          </Link>
+        </div>
+
       </div>
     </div>
   );

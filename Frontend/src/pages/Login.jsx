@@ -4,12 +4,16 @@ import { postLogin } from "../apis/authApi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/store/AuthContext";
 
+// Importing eye icons from react-icons
+import { HiEye, HiEyeOff } from "react-icons/hi";
+
 const Login = () => {
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
 
   // State for error message from backend
   const [errorMessage, setErrorMessage] = useState("");
@@ -26,12 +30,10 @@ const Login = () => {
         setUser(response.user); // update user context
         navigate("/");
       } else {
-        // Backend responded with success: false and maybe a message
         setErrorMessage(response.message || "Login failed");
       }
     } catch (error) {
-      // If error is thrown (like 400 or 401)
-      // Try to show the backend message if available
+      // Handle the error
       if (error.message) setErrorMessage(error.message);
       else setErrorMessage("An unexpected error occurred.");
     }
@@ -84,17 +86,29 @@ const Login = () => {
             >
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
-              rounded-lg shadow-sm focus:outline-none focus:ring-2 
-              focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
-              placeholder="Enter your password"
-            />
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"} // Toggle between text and password
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 
+                rounded-lg shadow-sm focus:outline-none focus:ring-2 
+                focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                placeholder="Enter your password"
+              />
+
+              {/* Eye icon button */}
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-300"
+              >
+                {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />} {/* Show different icons based on visibility */}
+              </button>
+            </div>
           </div>
 
           {/* Login Button */}
