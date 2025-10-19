@@ -38,7 +38,7 @@ const PaperCard = ({ paper }) => {
 
       {/* Inner card */}
       <div
-        className={`relative z-10 rounded-2xl overflow-hidden shadow-md h-[445px]
+        className={`relative z-10 rounded-2xl overflow-hidden shadow-md h-[445px] flex flex-col justify-between
           ${darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"}
         `}
       >
