@@ -50,7 +50,7 @@ const PaperCard = ({ paper }) => {
         />
 
         {/* Paper Info */}
-        <div className="p-4 flex flex-col justify-between">
+        <div className="p-4 flex flex-col gap-3">
           <div className="flex justify-between items-center">
             <span
               className={`text-xs font-medium px-2 py-1 rounded-full ${
