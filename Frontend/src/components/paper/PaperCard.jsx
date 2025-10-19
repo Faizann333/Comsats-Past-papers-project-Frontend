@@ -38,7 +38,7 @@ const PaperCard = ({ paper }) => {
 
       {/* Inner card */}
       <div
-        className={`relative z-10 rounded-2xl overflow-hidden shadow-md h-[445px] flex flex-col justify-between
+        className={`relative z-10 rounded-2xl overflow-hidden shadow-md h-[445px] flex flex-col 
           ${darkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-900"}
         `}
       >
@@ -50,7 +50,7 @@ const PaperCard = ({ paper }) => {
         />
 
         {/* Paper Info */}
-        <div className="p-4 flex flex-col gap-3">
+        <div className="p-4 flex flex-col gap-3 h-[295px] justify-between">
           <div className="flex justify-between items-center">
             <span
               className={`text-xs font-medium px-2 py-1 rounded-full ${
