@@ -25,7 +25,7 @@ const PaperCard = ({ paper }) => {
   };
 
   return (
-    <div className="relative rounded-2xl p-[3px] overflow-hidden w-[300px]">
+    <div className="relative rounded-2xl p-[3px] overflow-hidden w-[310px] h-[450px]">
       {/* Animated gradient border */}
       <div
         className="
@@ -50,7 +50,7 @@ const PaperCard = ({ paper }) => {
         />
 
         {/* Paper Info */}
-        <div className="p-4 flex flex-col gap-3">
+        <div className="p-4 flex flex-col justify-between">
           <div className="flex justify-between items-center">
             <span
               className={`text-xs font-medium px-2 py-1 rounded-full ${
