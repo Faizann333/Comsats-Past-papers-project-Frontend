@@ -53,6 +53,8 @@ const Home = () => {
 
 
       <PaperCardList paperList={latestPapers} />
+      <h1 className={`text-center mt-4 pb-4  font-semibold
+        ${darkMode ? 'text-white': 'text-black'}`}>See More In Past Paper Section</h1>
     </div>
   );
 };

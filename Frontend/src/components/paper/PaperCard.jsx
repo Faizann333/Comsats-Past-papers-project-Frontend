@@ -25,7 +25,7 @@ const PaperCard = ({ paper }) => {
   };
 
   return (
-    <div className="relative rounded-2xl p-[3px] overflow-hidden min-w-[300px]">
+    <div className="relative rounded-2xl p-[3px] overflow-hidden w-[300px]">
       {/* Animated gradient border */}
       <div
         className="

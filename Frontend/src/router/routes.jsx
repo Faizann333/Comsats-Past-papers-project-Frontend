@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/", element: <App />,
     children: [
-      { path: "/", element:<ProtectedRoute> <Home /></ProtectedRoute> },
+      { path: "/", element: <Home /> },
       { path: "/Past-Papers", element: <ProtectedRoute> <PastPapers /></ProtectedRoute> },
       { path: "/reviews", element:  <ProtectedRoute> <Reviews /></ProtectedRoute> },
       { path: "/upload/paper", element: <ProtectedRoute><UploadPaper /></ProtectedRoute> },
