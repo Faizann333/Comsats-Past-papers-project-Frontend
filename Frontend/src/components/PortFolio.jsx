@@ -1,6 +1,8 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 const PortFolio = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white px-4">
       
@@ -17,6 +19,9 @@ const PortFolio = () => {
       {/* Loading Spinner */}
       <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
 
+       {/* Home Button */}
+
+       <Button  onClick={()=>navigate('/')} name = "Back to Home"/>
       {/* Footer */}
       <p className="mt-10 text-sm opacity-80">
         © {new Date().getFullYear()} Faizan Ahmed | Portfolio

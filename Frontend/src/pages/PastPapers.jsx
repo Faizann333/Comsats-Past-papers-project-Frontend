@@ -48,7 +48,7 @@ const PastPapers = () => {
 
 
 
-      <h1 className="text-center font-bold text-2xl mt-3 mb-4">Past Papers</h1>
+      <h1 className="text-center text-2xl font-bold sm:text-4xl mt-3 mb-4">Past Papers</h1>
 
       {/* Papers List */}
       {filteredPapers.length > 0 ? (

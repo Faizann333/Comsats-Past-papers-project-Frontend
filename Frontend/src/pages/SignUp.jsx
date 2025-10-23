@@ -61,9 +61,10 @@ const SignUp = () => {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
-            <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
-                <h2 className="text-2xl font-bold text-center text-purple-600 dark:text-purple-400 mb-6">
+        <div className="flex flex-col min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
+            <h1 className="text-purple-500 text-center p-4 font-bold text-2xl"> Welcome To Past Paper Portal</h1>
+            <div className="w-full max-w-md bg-white mb-4 dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+                <h2 className="text-2xl font-bold text-center text-purple-600 dark:text-purple-500 mb-6">
                     Create an Account
                 </h2>
 

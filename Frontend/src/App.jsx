@@ -12,7 +12,7 @@ const App = () => {
       <AdminProvider>
       <PaperListProvider>
         <ReviewListProvider>
-          <SnakeCursor />
+          {/* <SnakeCursor /> */}
           <Navbar />
           <Outlet />
         </ReviewListProvider>

@@ -15,6 +15,7 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
   const toggleButtonRef = useRef(null);
+
   const postLogoutHandle = async () => {
     try {
       const response = await postLogout();
@@ -81,7 +82,7 @@ const Navbar = () => {
         }
 
         {/* Logo */}
-        <h1 className="font-bold text-2xl ">📚</h1>
+        <h1 onClick={()=>navigate('/')} className="font-bold text-2xl ">📚</h1>
       </div>
       {isSidebarOpen &&
 
